@@ -1,0 +1,272 @@
+[
+ {
+   "id": 1,
+   "e_type": "EVENT",
+   "e_info": "The Senate chooses Pertinax against his will to succeed Commodus as Roman Emperor.",
+   "e_date": "0193-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 193
+ },
+ {
+   "id": 2,
+   "e_type": "EVENT",
+   "e_info": "The Roman legions in Germania Superior refuse to swear loyalty to Galba. They rebel and proclaim Aulus Vitellius Germanicus as emperor.",
+   "e_date": "0069-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 69
+ },
+ {
+   "id": 3,
+   "e_type": "EVENT",
+   "e_info": "Michael VIII Palaiologos is proclaimed co-emperor of the Empire of Nicaea with his ward John IV Laskaris.",
+   "e_date": "1259-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1259
+ },
+ {
+   "id": 4,
+   "e_type": "EVENT",
+   "e_info": "Grand Prince Stephen I of Hungary is named the first King of Hungary by Pope Silvester II.",
+   "e_date": "1001-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1001
+ },
+ {
+   "id": 5,
+   "e_type": "EVENT",
+   "e_info": "King Francis I of France succeeds to the French throne.",
+   "e_date": "1515-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1515
+ },
+ {
+   "id": 6,
+   "e_type": "EVENT",
+   "e_info": "Albert II of Habsburg is crowned King of Hungary.",
+   "e_date": "1438-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1438
+ },
+ {
+   "id": 7,
+   "e_type": "EVENT",
+   "e_info": "The Evangelical Lutheran Church in America comes into existence, creating the largest Lutheran denomination in the United States.",
+   "e_date": "1988-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1988
+ },
+ {
+   "id": 8,
+   "e_type": "EVENT",
+   "e_info": "Russia begins to circulate new rubles to stem inflation and promote confidence.",
+   "e_date": "1998-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1998
+ },
+ {
+   "id": 9,
+   "e_type": "EVENT",
+   "e_info": "Croatian nobles elect Ferdinand I of Austria as king of Croatia in the Parliament on Cetin.",
+   "e_date": "1527-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1527
+ },
+ {
+   "id": 10,
+   "e_type": "EVENT",
+   "e_info": "Malta and Cyprus officially adopt the Euro currency and become the fourteenth and fifteenth Eurozone countries.",
+   "e_date": "2008-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 2008
+ },
+ {
+   "id": 11,
+   "e_type": "BIRTHDAY",
+   "e_info": "Miki Higashino, Japanese composer",
+   "e_date": "1968-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1968
+ },
+ {
+   "id": 12,
+   "e_type": "BIRTHDAY",
+   "e_info": "Scott Riggs, American racing driver",
+   "e_date": "1971-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1971
+ },
+ {
+   "id": 13,
+   "e_type": "BIRTHDAY",
+   "e_info": "Li Fang, Chinese tennis player",
+   "e_date": "1973-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1973
+ },
+ {
+   "id": 14,
+   "e_type": "BIRTHDAY",
+   "e_info": "Neve McIntosh, Scottish actress",
+   "e_date": "1972-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1972
+ },
+ {
+   "id": 15,
+   "e_type": "DEATH",
+   "e_info": "King Charles II of Navarre (Born 1332)",
+   "e_date": "1387-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1387
+ },
+ {
+   "id": 16,
+   "e_type": "EVENT",
+   "e_info": "Russia begins using the Anno Domini era and no longer uses the Anno Mundi era of the Byzantine Empire.",
+   "e_date": "1700-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1700
+ },
+ {
+   "id": 17,
+   "e_type": "EVENT",
+   "e_info": "Scotland begins its numbered year on January 1 instead of March 25.",
+   "e_date": "1600-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1600
+ },
+ {
+   "id": 18,
+   "e_type": "EVENT",
+   "e_info": "Charles II is crowned King of Scotland.",
+   "e_date": "1651-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1651
+ },
+ {
+   "id": 19,
+   "e_type": "EVENT",
+   "e_info": "John V is crowned King of Portugal.",
+   "e_date": "1707-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1707
+ },
+ {
+   "id": 20,
+   "e_type": "EVENT",
+   "e_info": "The first traveler's cheques, which can be used in 90 European cities, go on sale in London.",
+   "e_date": "1772-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1772
+ },
+ {
+   "id": 21,
+   "e_type": "EVENT",
+   "e_info": "1,500 soldiers of the 6th Pennsylvania Regiment under General Anthony Wayne's command rebel against the Continental Army's winter camp in Morristown, New Jersey as part of the Pennsylvania (Continentals; Regiment) Mutiny of 1781.",
+   "e_date": "1781-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1781
+ },
+ {
+   "id": 22,
+   "e_type": "EVENT",
+   "e_info": "The hymn that became known as \"Amazing Grace\", then titled \"1 Chronicles 17:16 : 17\" is first used to accompany a sermon led by John Newton in the town of Olney, England.",
+   "e_date": "1773-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1773
+ },
+ {
+   "id": 23,
+   "e_type": "EVENT",
+   "e_info": "Bouvet Island is discovered by French explorer Jean-Baptiste Charles Bouvet de Lozier.",
+   "e_date": "1739-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1739
+ },
+ {
+   "id": 24,
+   "e_type": "EVENT",
+   "e_info": "First edition of The Times of London, previously The Daily Universal Register, is published.",
+   "e_date": "1788-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1788
+ },
+ {
+   "id": 25,
+   "e_type": "EVENT",
+   "e_info": "The Dutch East India Company is dissolved.",
+   "e_date": "1800-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1800
+ },
+ {
+   "id": 26,
+   "e_type": "EVENT",
+   "e_info": "The legislative union of Kingdom of Great Britain and Kingdom of Ireland is completed to form the United Kingdom of Great Britain and Ireland.",
+   "e_date": "1801-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1801
+ },
+ {
+   "id": 27,
+   "e_type": "EVENT",
+   "e_info": "The dwarf planet Ceres is discovered by Giuseppe Piazzi.",
+   "e_date": "1801-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1801
+ },
+ {
+   "id": 28,
+   "e_type": "EVENT",
+   "e_info": "French rule ends in Haiti. Haiti becomes the first black republic and second independent country on the North America after the U.S.",
+   "e_date": "1804-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1804
+ },
+ {
+   "id": 29,
+   "e_type": "EVENT",
+   "e_info": "Emperor Gia Long orders all bronze wares of the Tay Son Dynasty to be collected and melted into nine cannons for the Royal Citadel in Hue, Vietnam.",
+   "e_date": "1803-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1803
+ },
+ {
+   "id": 30,
+   "e_type": "EVENT",
+   "e_info": "The French Republican Calendar is abolished.",
+   "e_date": "1806-01-01",
+   "e_month": 1,
+   "e_day": 1,
+   "e_year": 1806
+ }
+]

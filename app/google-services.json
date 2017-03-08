@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "902352563680",
+    "firebase_url": "https://todayinhistory-ca9f1.firebaseio.com",
+    "project_id": "todayinhistory-ca9f1",
+    "storage_bucket": "todayinhistory-ca9f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902352563680:android:ff036686fbde30ec",
+        "android_client_info": {
+          "package_name": "com.example.vaio.todayinhistory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902352563680-ldhka4k9ifh1cr824b2ctiuruik3v1hv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBho-SXRUwsU9HLR8RZWFCoNAECskGXErw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
