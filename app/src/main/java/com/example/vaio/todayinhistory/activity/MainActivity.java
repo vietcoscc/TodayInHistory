@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         try {
             getData();
-            initToolbar("0 / 0 / 0 ");
+            initToolbar("CC / YYYY / MM ");
             initDrawerLayout();
             initComponent();
 //            InputStream inputStream = getResources().getAssets().open("sample.json");
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity
         replaceContentMainLayout(contentMainFragment);
     }
 
-    public void replaceContentMainLayout(Fragment fragment) {
+    public void replaceContentMainLayout(Fragment fragment) throws Exception {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.content_main_layout, fragment);
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
     }
 
-    private void getData() {
+    private void getData() throws Exception{
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference();
         reference.child(ITEM).addChildEventListener(new ChildEventListener() {

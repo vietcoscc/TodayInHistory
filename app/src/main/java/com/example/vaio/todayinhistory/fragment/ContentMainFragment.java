@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,14 +41,17 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
     public static final int CENTURY_END_AT = 21;
     public static final int MONTH_START_AT = 1;
     public static final int MONTH_END_AT = 12;
+    private static final String TAG = "ContentMainFragment";
     private RecyclerView recyclerView;
     private ImageView ivBack;
     private ImageView ivForward;
     private ViewPager viewPager;
     private TextView tvTitle;
     private ArrayList<Item> arrItem;
+    private ArrayList<Item> arrItemTmp = new ArrayList<>();
     private EventRecyclerViewAdapter eventRecyclerViewAdapter;
     private NumberPickerViewPagerAdapter numberPickerViewPagerAdapter;
+    private ContentLoadingProgressBar progressBar;
     private String currentContent;
     private int centurySelected = 1;
     private int yearSelected = 0;
@@ -69,19 +74,21 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
 
     protected void initViews(View view) {
         try {
+            arrItemTmp.addAll(arrItem);
+            progressBar = (ContentLoadingProgressBar) view.findViewById(R.id.contentLoadingProgressBar);
             currentContent = CENTURY;
             tvTitle = (TextView) view.findViewById(R.id.tvDate);
             tvTitle.setText(currentContent);
             recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewEvent);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-            eventRecyclerViewAdapter = new EventRecyclerViewAdapter(arrItem);
-            recyclerView.setAdapter(eventRecyclerViewAdapter);
+            initEventRecyclerViewAdapter(arrItem);
+
+            //
             ivBack = (ImageView) view.findViewById(R.id.ivBack);
             ivForward = (ImageView) view.findViewById(R.id.ivFoward);
-
             ivBack.setOnClickListener(this);
             ivForward.setOnClickListener(this);
-
+//
             viewPager = (ViewPager) view.findViewById(R.id.viewPager);
             numberPickerViewPagerAdapter = new NumberPickerViewPagerAdapter(getFragmentManager(), CENTURY_START_AT, CENTURY_END_AT);
             numberPickerViewPagerAdapter.setOnItemClick(this);
@@ -93,6 +100,18 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
 
     }
 
+
+    private void initEventRecyclerViewAdapter(ArrayList<Item> arrItem) throws Exception {
+        eventRecyclerViewAdapter = new EventRecyclerViewAdapter(arrItem);
+        recyclerView.setAdapter(eventRecyclerViewAdapter);
+        eventRecyclerViewAdapter.setOnCompleteLoading(new EventRecyclerViewAdapter.OnCompleteLoading() {
+            @Override
+            public void onComplete() {
+                progressBar.hide();
+            }
+        });
+    }
+
     private void initNumberPickerViewPagerAdapter(int from, int to) {
         numberPickerViewPagerAdapter =
                 new NumberPickerViewPagerAdapter(getFragmentManager(), from, to);
@@ -100,7 +119,7 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
         numberPickerViewPagerAdapter.setOnItemClick(this);
     }
 
-    private void onImageViewBackPress() {
+    private void onImageViewBackPress() throws Exception {
         switch (currentContent) {
             case CENTURY:
                 initNumberPickerViewPagerAdapter(MONTH_START_AT, MONTH_END_AT);
@@ -124,10 +143,9 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
                 currentContent = YEAR;
                 break;
         }
-//        Toast.makeText(getContext(), centurySelected + "-" + yearSelected + "-" + monthSelected, Toast.LENGTH_SHORT).show();
     }
 
-    private void onImageViewForwardPress() {
+    private void onImageViewForwardPress() throws Exception {
         switch (currentContent) {
             case CENTURY:
                 int year_start_at = (centurySelected - 1) * 100 + 1;
@@ -151,50 +169,79 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
 
                 break;
         }
-//        Toast.makeText(getContext(), centurySelected + "-" + yearSelected + "-" + monthSelected, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ivBack:
-                onImageViewBackPress();
-                break;
-            case R.id.ivFoward:
-                onImageViewForwardPress();
-                break;
+        try {
+            switch (v.getId()) {
+                case R.id.ivBack:
+                    onImageViewBackPress();
+                    break;
+                case R.id.ivFoward:
+                    onImageViewForwardPress();
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
     public void notifyData() {
         if (eventRecyclerViewAdapter != null) {
             eventRecyclerViewAdapter.notifyDataSetChanged();
+            arrItemTmp.clear();
+            arrItemTmp.addAll(arrItem);
         }
     }
 
     @Override
     public void onClick(View view, int position) {
-        TextView textView = (TextView) view.findViewById(R.id.tvNumber);
-        switch (currentContent) {
-            case CENTURY:
-                centurySelected = Integer.valueOf(textView.getText().toString());
-                yearSelected = 0;
-                monthSelected = 0;
-                break;
-            case YEAR:
-                yearSelected = centurySelected * 100 + position;
-                break;
-            case MONTH:
-                monthSelected = Integer.valueOf(textView.getText().toString());
-                break;
-        }
-        onImageViewForwardPress();
-        MainActivity activity = (MainActivity) getActivity();
         try {
+
+            TextView textView = (TextView) view.findViewById(R.id.tvNumber);
+            switch (currentContent) {
+                case CENTURY:
+                    centurySelected = Integer.valueOf(textView.getText().toString());
+                    yearSelected = 0;
+                    monthSelected = 0;
+                    break;
+                case YEAR:
+                    yearSelected = Integer.valueOf(textView.getText().toString());
+                    break;
+                case MONTH:
+                    monthSelected = Integer.valueOf(textView.getText().toString());
+                    break;
+            }
+
+            onImageViewForwardPress();
+
+            MainActivity activity = (MainActivity) getActivity();
             activity.initToolbar("C " + centurySelected + " / Y " + yearSelected + " / M " + monthSelected + " ");
+            arrItem.clear();
+            for (int i = 0; i < arrItemTmp.size(); i++) {
+                Item item = arrItemTmp.get(i);
+                int year = Integer.valueOf(item.getYear().toString().trim());
+                int century;
+                if (year % 100 == 0) {
+                    century = year / 100;
+                } else {
+                    century = year / 100 + 1;
+                }
+
+                int month = Integer.valueOf(item.getMonth().toString().trim());
+                if (century == centurySelected) {
+                    if (year == yearSelected || yearSelected == 0) {
+                        if (month == monthSelected || monthSelected == 0) {
+                            arrItem.add(arrItemTmp.get(i));
+                        }
+                    }
+                }
+            }
+            eventRecyclerViewAdapter.notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        Toast.makeText(getContext(), centurySelected + " / " + yearSelected + " / " + monthSelected, Toast.LENGTH_SHORT).show();
     }
 }

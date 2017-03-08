@@ -1,10 +1,12 @@
 package com.example.vaio.todayinhistory.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vaio.todayinhistory.R;
 import com.example.vaio.todayinhistory.model.Item;
@@ -36,6 +38,11 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         holder.tvDate.setText(item.getDate());
         holder.tvInfo.setText(item.getInfo());
         holder.tvType.setText(item.getType());
+        if (position >= 0) {
+            if (onCompleteLoading != null) {
+                onCompleteLoading.onComplete();
+            }
+        }
     }
 
     @Override
@@ -54,5 +61,15 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             tvInfo = (TextView) itemView.findViewById(R.id.tvInfo);
             tvType = (TextView) itemView.findViewById(R.id.tvType);
         }
+    }
+
+    public void setOnCompleteLoading(OnCompleteLoading onCompleteLoading) {
+        this.onCompleteLoading = onCompleteLoading;
+    }
+
+    private OnCompleteLoading onCompleteLoading;
+
+    public interface OnCompleteLoading {
+        void onComplete();
     }
 }
