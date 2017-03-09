@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.example.vaio.todayinhistory.R;
 import com.example.vaio.todayinhistory.fragment.ContentMainFragment;
+import com.example.vaio.todayinhistory.fragment.QuizFragment;
 import com.example.vaio.todayinhistory.model.Item;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -29,20 +30,11 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    public static final String ID = "id";
-    public static final String TYPE = "e_type";
-    public static final String INFO = "e_info";
-    public static final String DATE = "e_date";
-    public static final String DAY = "e_day";
-    public static final String MONTH = "e_month";
-    public static final String YEAR = "e_year";
 
-    public static final String BIRTHDAY = "BIRTHDAY";
-    public static final String DEATH = "DEATH";
-    public static final String EVENT = "EVENT";
     public static final String ITEM = "item";
     private Toolbar toolbar;
     private ArrayList arrItem = new ArrayList();   // arr Main data
@@ -112,7 +104,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
     }
 
-    private void getData() throws Exception{
+    private void getData() throws Exception {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference();
         reference.child(ITEM).addChildEventListener(new ChildEventListener() {
@@ -208,12 +200,23 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        try {
+            int id = item.getItemId();
+            switch (id) {
+                case R.id.nav_home:
+                    replaceContentMainLayout(new ContentMainFragment(arrItem));
+                    break;
+                case R.id.nav_quiz:
+                    replaceContentMainLayout(new QuizFragment());
+                    break;
+            }
 
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

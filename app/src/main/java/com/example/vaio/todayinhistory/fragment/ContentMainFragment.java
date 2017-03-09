@@ -22,6 +22,7 @@ import com.example.vaio.todayinhistory.adapter.EventRecyclerViewAdapter;
 import com.example.vaio.todayinhistory.adapter.NumberPickerViewPagerAdapter;
 import com.example.vaio.todayinhistory.model.CurrentTime;
 import com.example.vaio.todayinhistory.model.Item;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 
@@ -42,16 +43,19 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
     public static final int MONTH_START_AT = 1;
     public static final int MONTH_END_AT = 12;
     private static final String TAG = "ContentMainFragment";
+
     private RecyclerView recyclerView;
     private ImageView ivBack;
     private ImageView ivForward;
     private ViewPager viewPager;
     private TextView tvTitle;
-    private ArrayList<Item> arrItem;
-    private ArrayList<Item> arrItemTmp = new ArrayList<>();
     private EventRecyclerViewAdapter eventRecyclerViewAdapter;
     private NumberPickerViewPagerAdapter numberPickerViewPagerAdapter;
     private ContentLoadingProgressBar progressBar;
+    private CirclePageIndicator circlePageIndicator;
+
+    private ArrayList<Item> arrItem;
+    private ArrayList<Item> arrItemTmp = new ArrayList<>();
     private String currentContent;
     private int centurySelected = 1;
     private int yearSelected = 0;
@@ -77,6 +81,8 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
             arrItemTmp.addAll(arrItem);
             progressBar = (ContentLoadingProgressBar) view.findViewById(R.id.contentLoadingProgressBar);
             currentContent = CENTURY;
+            circlePageIndicator = (CirclePageIndicator) view.findViewById(R.id.circlePageIndicator);
+
             tvTitle = (TextView) view.findViewById(R.id.tvDate);
             tvTitle.setText(currentContent);
             recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewEvent);
@@ -93,7 +99,7 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
             numberPickerViewPagerAdapter = new NumberPickerViewPagerAdapter(getFragmentManager(), CENTURY_START_AT, CENTURY_END_AT);
             numberPickerViewPagerAdapter.setOnItemClick(this);
             viewPager.setAdapter(numberPickerViewPagerAdapter);
-
+            circlePageIndicator.setViewPager(viewPager);
         } catch (Exception e) {
             e.printStackTrace();
         }
