@@ -17,7 +17,6 @@ import android.view.MenuItem;
 
 import com.example.vaio.todayinhistory.R;
 import com.example.vaio.todayinhistory.fragment.ContentMainFragment;
-import com.example.vaio.todayinhistory.fragment.QuizFragment;
 import com.example.vaio.todayinhistory.model.Item;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -25,12 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -209,7 +203,7 @@ public class MainActivity extends AppCompatActivity
                     replaceContentMainLayout(new ContentMainFragment(arrItem));
                     break;
                 case R.id.nav_quiz:
-                    replaceContentMainLayout(new QuizFragment());
+
                     break;
             }
 
