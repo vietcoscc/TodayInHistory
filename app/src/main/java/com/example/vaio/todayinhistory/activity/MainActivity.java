@@ -105,8 +105,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getData() throws Exception {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = firebaseDatabase.getReference();
+        reference.child(ITEM).keepSynced(true);
         reference.child(ITEM).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
