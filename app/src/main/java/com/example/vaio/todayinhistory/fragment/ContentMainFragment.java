@@ -1,17 +1,21 @@
 package com.example.vaio.todayinhistory.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.ContentLoadingProgressBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -107,13 +111,23 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
     }
 
 
-    private void initEventRecyclerViewAdapter(ArrayList<Item> arrItem) throws Exception {
+    private void initEventRecyclerViewAdapter(final ArrayList<Item> arrItem) throws Exception {
         eventRecyclerViewAdapter = new EventRecyclerViewAdapter(arrItem);
         recyclerView.setAdapter(eventRecyclerViewAdapter);
         eventRecyclerViewAdapter.setOnCompleteLoading(new EventRecyclerViewAdapter.OnCompleteLoading() {
             @Override
             public void onComplete() {
                 progressBar.hide();
+            }
+        });
+        eventRecyclerViewAdapter.setOnItemClick(new EventRecyclerViewAdapter.OnItemClick() {
+            @Override
+            public void onClick(View view, int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar);
+                builder.setMessage(arrItem.get(position).getInfo());
+                builder.setTitle(arrItem.get(position).getDate());
+                builder.setCancelable(true);
+                builder.create().show();
             }
         });
     }
@@ -149,6 +163,8 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
                 currentContent = YEAR;
                 break;
         }
+        AnimationSet animationSet = (AnimationSet) AnimationUtils.loadAnimation(getContext(), R.anim.anim_set_left_to_right);
+        tvTitle.startAnimation(animationSet);
     }
 
     private void onImageViewForwardPress() throws Exception {
@@ -175,6 +191,8 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
 
                 break;
         }
+        AnimationSet animationSet = (AnimationSet) AnimationUtils.loadAnimation(getContext(), R.anim.anim_set_right_to_left);
+        tvTitle.startAnimation(animationSet);
     }
 
     @Override
@@ -207,17 +225,18 @@ public class ContentMainFragment extends Fragment implements View.OnClickListene
         try {
 
             TextView textView = (TextView) view.findViewById(R.id.tvNumber);
+
             switch (currentContent) {
                 case CENTURY:
-                    centurySelected = Integer.valueOf(textView.getText().toString());
+                    centurySelected = Integer.parseInt(textView.getText().toString());
                     yearSelected = 0;
                     monthSelected = 0;
                     break;
                 case YEAR:
-                    yearSelected = Integer.valueOf(textView.getText().toString());
+                    yearSelected = Integer.parseInt(textView.getText().toString());
                     break;
                 case MONTH:
-                    monthSelected = Integer.valueOf(textView.getText().toString());
+                    monthSelected = Integer.parseInt(textView.getText().toString());
                     break;
             }
 

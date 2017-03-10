@@ -23,7 +23,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:src="@drawable/back_arrow" />
+            android:src="@drawable/bg_iv_back" />
 
         <TextView
             android:id="@+id/tvDate"
@@ -43,7 +43,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:src="@drawable/forward_arrow" />
+            android:src="@drawable/bg_iv_forward" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -54,7 +54,7 @@
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
-            android:padding="@dimen/view_pager_padding"
+            android:layout_margin="@dimen/view_pager_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -86,6 +86,6 @@
             android:id="@+id/recyclerViewEvent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin = "@dimen/recycler_view_default_margin" />
+            android:layout_margin="@dimen/recycler_view_default_margin" />
     </RelativeLayout>
 </LinearLayout>

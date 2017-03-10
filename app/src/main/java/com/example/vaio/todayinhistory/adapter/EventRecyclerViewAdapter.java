@@ -50,7 +50,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
         return arrItem.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvDate;
         TextView tvInfo;
         TextView tvType;
@@ -60,6 +60,14 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             tvDate = (TextView) itemView.findViewById(R.id.tvDate);
             tvInfo = (TextView) itemView.findViewById(R.id.tvInfo);
             tvType = (TextView) itemView.findViewById(R.id.tvType);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (onItemClick != null) {
+                onItemClick.onClick(v, getPosition());
+            }
         }
     }
 
@@ -71,5 +79,15 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     public interface OnCompleteLoading {
         void onComplete();
+    }
+
+    public void setOnItemClick(OnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
+    }
+
+    private OnItemClick onItemClick;
+
+    public interface OnItemClick {
+        void onClick(View view, int position);
     }
 }
